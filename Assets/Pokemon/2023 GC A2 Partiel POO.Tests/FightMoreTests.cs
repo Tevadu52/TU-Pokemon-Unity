@@ -153,7 +153,38 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
         // - Cumuler les force/faiblesses en ajoutant un type pour l'équipement qui rendrait plus sensible/résistant à un type
         // - L'utilisation d'objets : Potion, SuperPotion, Vitess+, Attack+ etc.
         // - Gérer les PP (limite du nombre d'utilisation) d'une attaque,
+        [Test]
+        public void SkillHasPP()
+        {
+            Character pikachu = new Character(2000, 50, 30, 200, TYPE.NORMAL);
+            Character salameche = new Character(90, 60, 10, 20, TYPE.FIRE);
+            Fight f = new Fight(pikachu, salameche);
+            Punch p1 = new Punch();
+            Punch p2 = new Punch();
+
+
+            f.ExecuteTurn(p1, p2);
+            Assert.That(p1.CurrentPP, Is.EqualTo(p1.PP - 1));
+        }
         // si on selectionne une attack qui a 0 PP on inflige 0
+        [Test]
+        public void SkillWith0PPDontDoDamage()
+        {
+            Character pikachu = new Character(2000, 50, 30, 20, TYPE.NORMAL);
+            Character mewtwo = new Character(90, 6000, 10, 200, TYPE.NORMAL);
+            Fight f = new Fight(pikachu, mewtwo);
+            Punch p1 = new Punch();
+            MegaPunch2 p2 = new MegaPunch2();
+
+
+            f.ExecuteTurn(p1, p2);
+            Assert.That(p2.CurrentPP, Is.EqualTo(0));
+            Assert.That(pikachu.IsAlive, Is.EqualTo(false));
+
+            pikachu.ReceiveHeal(2000);
+            f.ExecuteTurn(p1, p2);
+            Assert.That(pikachu.IsAlive, Is.EqualTo(true));
+        }
 
         // Choisis ce que tu veux ajouter comme feature et fait en au max.
         // Les nouveaux TU doivent être dans ce fichier.

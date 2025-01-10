@@ -14,7 +14,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
     /// </summary>
     public class Punch : Skill
     {
-        public Punch() : base(TYPE.NORMAL, 30, 70, StatusPotential.NONE) { }
+        public Punch() : base(TYPE.NORMAL, 70, 30, StatusPotential.NONE) { }
     }
 
     /// <summary>
@@ -22,7 +22,15 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
     /// </summary>
     public class MegaPunch : Skill
     {
-        public MegaPunch() : base(TYPE.NORMAL, 7000, 1, StatusPotential.NONE) { }
+        public MegaPunch() : base(TYPE.NORMAL, 7000, 10, StatusPotential.NONE) { }
+    }
+
+    /// <summary>
+    /// Coup de poing basique ++
+    /// </summary>
+    public class MegaPunch2 : Skill
+    {
+        public MegaPunch2() : base(TYPE.NORMAL, 7000, 1, StatusPotential.NONE) { }
     }
 
     /// <summary>

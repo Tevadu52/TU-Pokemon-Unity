@@ -121,10 +121,10 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <exception cref="NotImplementedException"></exception>
         public void ReceiveAttack(Skill s)
         {
-            s.SkillUsed();
-            if(s.PP == 0) return;
+            if(s.CurrentPP == 0) return;
             ReceiveDamage((int)(s.Power * TypeResolver.GetFactor(s.Type, BaseType)) - Defense);
             if (s.Status != StatusPotential.NONE) CurrentStatus = StatusEffect.GetNewStatusEffect(s.Status);
+            s.SkillUsed();
         }
         /// <summary>
         /// Application de dégat
