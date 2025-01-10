@@ -66,9 +66,10 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// Méthode enclenché par le système de combat à la fin de chaque tour
         /// Vous pouvez ajouter du contenu si besoin
         /// </summary>
-        public virtual void EndTurn()
+        public virtual void EndTurn(Character character)
         {
-            throw new NotImplementedException();
+            RemainingTurn--;
+            if (RemainingTurn <= 0) character.Antidote();
         }
     }
 
@@ -89,6 +90,12 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
     {
         public BurnStatus() : base(5, 10, true, 0f)
         {
+        }
+
+        public override void EndTurn(Character character)
+        {
+            base.EndTurn(character);
+            character.ReceiveDamage(DamageEachTurn);
         }
     }
 

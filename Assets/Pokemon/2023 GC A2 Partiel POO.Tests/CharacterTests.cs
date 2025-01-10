@@ -77,15 +77,15 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
             var oldHealth = pikachu.CurrentHealth;
 
             pikachu.ReceiveAttack(punch); // hp : 100 => 60
-            Assert.That(pikachu.CurrentHealth, 
+            Assert.That(pikachu.CurrentHealth,
                 Is.EqualTo(oldHealth - (punch.Power - pikachu.Defense))); // 100 - (70-30)
             Assert.That(pikachu.CurrentStatus, Is.EqualTo(null));
             Assert.That(pikachu.IsAlive, Is.EqualTo(true));
-            
+
             pikachu.ReceiveAttack(punch); // hp : 60 => 20
             Assert.That(pikachu.CurrentHealth, Is.EqualTo(20));
             Assert.That(pikachu.IsAlive, Is.EqualTo(true));
-            
+
             pikachu.ReceiveAttack(punch); // hp : 20 => 0
             Assert.That(pikachu.CurrentHealth, Is.EqualTo(0));
             Assert.That(pikachu.IsAlive, Is.EqualTo(false));

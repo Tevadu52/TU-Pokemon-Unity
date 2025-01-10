@@ -6,10 +6,11 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
     /// </summary>
     public abstract class Skill
     {
-        public Skill(TYPE type, int power, StatusPotential status)
+        public Skill(TYPE type, int power, int Pp, StatusPotential status)
         {
             Type = type;
             Power = power;
+            PP = Pp;
             Status = status;
         }
 
@@ -22,10 +23,15 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// </summary>
         public int Power { get; private set; }
         /// <summary>
+        /// Le nombre de fois que la compétence peut etre utiliser
+        /// </summary>
+        public int PP { get; private set; }
+        /// <summary>
         /// Le statut infligé à la cible à la suite de l'attaque
         /// </summary>
         public StatusPotential Status { get; private set; }
 
+        public virtual void SkillUsed() { PP--; }
     }
 
 }
